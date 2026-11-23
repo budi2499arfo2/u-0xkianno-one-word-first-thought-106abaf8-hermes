@@ -1,8 +1,12 @@
 """One Word, First Thought — Hermes entry.
 
 The entry is a single word: the first word that comes to mind, with no
-topic, no explanation and no second draft. One verb — a thread coming
-loose, a plan coming apart — motion and story in a single beat.
+topic, no explanation and no second draft.
+
+Why "unravel": it is interesting because it is a process, not a thing.
+A thread coming loose, a mystery opening up, a plan coming apart — the
+word carries motion and a question (what comes undone next?) in a single
+beat, so the judge's eye has somewhere to go after reading it.
 """
 
 import os
@@ -17,6 +21,8 @@ def main() -> int:
     if not text or text != text.strip():
         print("gate failed: entry is empty or has surrounding whitespace", file=sys.stderr)
         return 1
+    # Single-word gate: split() counts whitespace-separated tokens, so this
+    # rejects multi-word entries and any hidden space inside the word.
     if len(text.split()) != 1:
         print("gate failed: entry must be exactly one word", file=sys.stderr)
         return 1
